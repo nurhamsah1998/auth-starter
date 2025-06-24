@@ -1,13 +1,22 @@
 package main
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"log"
+
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/recover"
+	"github.com/nurhamsah1998/ppdb_be/server"
+)
 
 func main() {
-	app := fiber.New()
-
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
+	app := fiber.New(fiber.Config{
+		// Override default error handler
+		ErrorHandler: func(ctx *fiber.Ctx, err error) error {
+			log.Println(err.Error())
+			return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": true, "message": "Internal server error."})
+		},
 	})
-
+	app.Use(recover.New())
+	server.RouteInit(app)
 	app.Listen(":3000")
 }
