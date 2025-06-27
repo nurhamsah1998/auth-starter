@@ -1,8 +1,6 @@
 package main
 
 import (
-	"log"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/nurhamsah1998/ppdb_be/internal"
@@ -14,8 +12,13 @@ func main() {
 	app := fiber.New(fiber.Config{
 		// Override default error handler
 		ErrorHandler: func(ctx *fiber.Ctx, err error) error {
-			log.Println(err.Error())
-			return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": true, "message": "Internal server error."})
+			var errorMessage string
+			var errorStatus int
+			if err.Error() != "" {
+				errorMessage = err.Error()
+				errorStatus = fiber.StatusBadRequest
+			}
+			return ctx.Status(errorStatus).JSON(fiber.Map{"error": true, "message": errorMessage})
 		},
 	})
 	app.Use(recover.New())

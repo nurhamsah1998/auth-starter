@@ -1,4 +1,4 @@
-package health
+package service
 
 import "github.com/gofiber/fiber/v2"
 

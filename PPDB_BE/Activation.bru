@@ -1,0 +1,17 @@
+meta {
+  name: Activation
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/api/auth/activation/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlX2FjdGl2YXRpb24iOiJoQ1o3dWlSSWtnIiwiZW1haWwiOiJudXJoYW1zYWgxQG1haWwuY29tIiwiZXhwIjoxNzUxNjE2MDYwLCJpZCI6NTV9.DA3jGE-vK_UkPi_81Pc4X2IvfN09eEO3r1S1uwuBRag
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "activation":"hCZ7uiRIkg"
+  }
+}
