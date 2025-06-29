@@ -15,10 +15,10 @@ func ProfileHandler() *ProfileService {
 }
 
 func (s *ProfileService) MyProfile(c *fiber.Ctx) error {
-	/// userCred kepanjangan dari userCredential, yang berisi data client,
+	/// userSession berisi data client,
 	/// hasil dari decode akses token. berisi : id client dan email client,
 	/// kurang lebih kalau di express JS seperti req.user.id / req.user.email
-	userCred := c.Locals("user").(middleware.UserCredential)
+	userSession := c.Locals("user").(middleware.UserSession)
 
-	return c.Status(200).JSON(fiber.Map{"message": "OK", "error": false, "data": userCred})
+	return c.Status(200).JSON(fiber.Map{"message": "OK", "error": false, "data": userSession})
 }

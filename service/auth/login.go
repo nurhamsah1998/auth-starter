@@ -55,19 +55,30 @@ func (s *AuthService) Login(c *fiber.Ctx) error {
 		return errors.New("invalid credential")
 	}
 	/// proses pembuatan akses token untuk client
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+	accessToken := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"id":    user.ID,
 		"email": user.Email,
-		/// token JWT akan expired/kadaluarsa dalam 168 jam kedepan setelah berhasil login
+		/// akses token JWT akan expired/kadaluarsa dalam 5 jam kedepan setelah berhasil login
+		"exp": time.Now().Add(5 * time.Hour).Unix(),
+	})
+	accessTokenString, _ := accessToken.SignedString([]byte(os.Getenv("ACCESS_TOKEN"))) /// <--- secret key untuk token login (mengambil dari file .env)
+
+	/// proses pembuatan refresh token untuk client
+	refreshToken := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+		"email": user.Email,
+		/// refresh token JWT akan expired/kadaluarsa dalam 168 jam kedepan
 		"exp": time.Now().Add(168 * time.Hour).Unix(),
 	})
 
-	tokenString, _ := token.SignedString([]byte(os.Getenv("ACCESS_TOKEN"))) /// <--- secret key untuk token login (mengambil dari file .env)
+	refreshTokenString, _ := refreshToken.SignedString([]byte(os.Getenv("REFRESH_TOKEN"))) /// <--- secret key untuk refresh token (mengambil dari file .env)
+	/// proses update/set refresh token yang berada di database
+	internal.DB.Model(&user).Update("RefreshToken", refreshTokenString)
 	data := fiber.Map{
-		"token":   tokenString,
-		"id":      user.ID,
-		"email":   user.Email,
-		"profile": user.Profile,
+		"access_token":  accessTokenString,
+		"refresh_token": refreshTokenString,
+		"id":            user.ID,
+		"email":         user.Email,
+		"profile":       user.Profile,
 	}
 	return c.Status(200).JSON(fiber.Map{"message": "Login successfully", "data": data})
 }

@@ -1,0 +1,15 @@
+meta {
+  name: refresh token
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost:3000/api/auth/refresh-token
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Refresh 
+}

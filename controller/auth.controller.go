@@ -11,6 +11,7 @@ func AuthController(route fiber.Router) {
 	/// inject service auth ke auth controller
 	route.Post("/register", service.Register)
 	route.Post("/login", service.Login)
+	route.Get("/refresh-token", service.RefreshToken)
 	route.Post("/activation/:token_activation", service.Activation)
 	/// forgot password, client mengirim email ke server untuk,
 	/// meminta link reset password

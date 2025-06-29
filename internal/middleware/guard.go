@@ -8,7 +8,7 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
-type UserCredential struct {
+type UserSession struct {
 	ID    float64
 	Email string
 }
@@ -24,7 +24,7 @@ func Guard(c *fiber.Ctx) error {
 	}
 	stringToken := strings.Replace(headerAuth, "Bearer ", "", 1)
 	/// decode token
-	token, err := jwt.Parse(stringToken, func(token *jwt.Token) (interface{}, error) {
+	token, err := jwt.Parse(stringToken, func(token *jwt.Token) (any, error) {
 		return []byte(os.Getenv("ACCESS_TOKEN")), nil
 	}, jwt.WithValidMethods([]string{jwt.SigningMethodHS256.Alg()}))
 	if err != nil {
@@ -32,12 +32,12 @@ func Guard(c *fiber.Ctx) error {
 	}
 
 	if claims, ok := token.Claims.(jwt.MapClaims); ok {
-		userData := UserCredential{
+		userSession := UserSession{
 			Email: claims["email"].(string),
 			ID:    claims["id"].(float64),
 		}
 		/// set user/client data
-		c.Locals("user", userData)
+		c.Locals("user", userSession)
 	} else {
 		return c.Status(401).JSON(fiber.Map{"error": true, "message": err.Error()})
 	}

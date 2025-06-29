@@ -70,8 +70,7 @@ func (s *AuthService) Register(c *fiber.Ctx) error {
 	if err != nil {
 		return errors.New("failed create token activation")
 	}
-	/// proses insert token aktivasi ke tabel users pada bagian kolom "Activation",
-	/// dengan menggunakan metode update.
+	/// proses update token aktivasi di database
 	internal.DB.Model(&user).Update("Activation", tokenString)
 
 	return c.Status(201).JSON(fiber.Map{"message": "Register successfully. We send a unique code for activation", "data": bodyPayload})
