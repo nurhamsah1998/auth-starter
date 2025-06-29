@@ -3,8 +3,8 @@ package main
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/recover"
-	"github.com/nurhamsah1998/ppdb_be/internal"
-	"github.com/nurhamsah1998/ppdb_be/server"
+	"github.com/nurhamsah1998/auth-starter/internal"
+	"github.com/nurhamsah1998/auth-starter/server"
 )
 
 func main() {

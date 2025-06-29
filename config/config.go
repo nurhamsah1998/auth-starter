@@ -7,6 +7,8 @@ import (
 	"github.com/joho/godotenv"
 )
 
+/// db config untuk mengambil data di .env
+
 type DBConfig struct {
 	Host     string
 	Port     string

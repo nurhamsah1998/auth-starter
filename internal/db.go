@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/nurhamsah1998/ppdb_be/config"
-	"github.com/nurhamsah1998/ppdb_be/internal/model"
+	"github.com/nurhamsah1998/auth-starter/config"
+	"github.com/nurhamsah1998/auth-starter/internal/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

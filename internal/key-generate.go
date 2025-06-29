@@ -1,7 +1,9 @@
-package utils
+package internal
 
 import "math/rand"
 
+/// generate random code untuk kode aktivasi
+/// length adalah panjang kode yang akan digenerate
 func KeyGenerate(length int) string {
 	code := []string{"A", "B", "C", "D", "E", "F", "G",
 		"H",
