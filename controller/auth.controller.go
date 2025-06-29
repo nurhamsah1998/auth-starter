@@ -2,12 +2,12 @@ package controller
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/nurhamsah1998/auth-starter/service"
+	"github.com/nurhamsah1998/auth-starter/service/auth"
 )
 
 // / auth controller
 func AuthController(route fiber.Router) {
-	service := service.AuthHandler()
+	service := auth.AuthHandler()
 	/// inject service auth ke auth controller
 	route.Post("/register", service.Register)
 	route.Post("/login", service.Login)
