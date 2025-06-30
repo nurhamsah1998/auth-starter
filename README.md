@@ -28,33 +28,52 @@ Starter ini sedikit mengadopsi penggunaan backend javascript seperti [Express JS
 📦 auth-starter
 ├── 📁 config
 │   └── config.go
-├── 📁 constant
-│   └── response.go
-├── 📁 database
-│   └── connection.go
-├── 📁 handler
-│   ├── auth.handler.go
-│   └── user.handler.go
-├── 📁 middleware
-│   └── jwt.middleware.go
-├── 📁 model
-│   ├── profile.go
-│   └── user.go
-├── 📁 repository
-│   ├── profile.repository.go
-│   └── user.repository.go
-├── 📁 router
+├── 📁 controller
+│   └── auth.controller.go
+│   └── profile.controller.go
+├── 📁 doc_api
+│   └── 📁 auth
+│   │    └── Activation.bru
+│   │    └── folder.bru
+│   │    └── health.bru
+│   │    └── Login.bru
+│   │    └── refresh token.bru
+│   │    └── register.bru
+│   └── 📁 Profile
+│   │    └── folder.bru
+│   │    └── profile.bru
+│   └── bruno.json
+├── 📁 internal
+│   └── 📁 middleware
+│   │    └── guard.go
+│   └── 📁 model
+│   │    └── user.go
+│   │    └── profile.go
+│   └── db.go
+│   └── key_generator.go
+│   └── validation.go
+├── 📁 server
 │   └── router.go
 ├── 📁 service
-│   ├── auth.service.go
-│   └── user.service.go
+│   └── 📁 auth
+│   │    └── activation.service.go
+│   │    └── forgot_password.service.go
+│   │    └── handler.service.go
+│   │    └── login.service.go
+│   │    └── refresh_token.service.go
+│   │    └── register.service.go
+│   │    └── reset_password.service.go
+│   └── health.service.go
+│   └── profile.service.go
 ├── .env
+├── .gitignore
 ├── go.mod
 ├── go.sum
+├── license
 └── main.go
+└── README.MD
 
 ```
-
 
 ### API docs 🌐
 untuk API dokumentasi sudah ada, foldernya bernama doc_api. untuk membuka dokumentasi gunakan tool [Bruno](https://www.usebruno.com/)
