@@ -105,6 +105,20 @@ go run main.go
 ```
 
 - Rekomendasi pakai [Air](https://github.com/air-verse/air) seperti nodemon di javascript
+- file .env
+
+```
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=root
+DB_NAME=ppdb_service
+DB_SSLMODE=disable
+ACCESS_TOKEN=SJHuyh76HYuj43Derf09MNbv8Jnhu7
+REFRESH_TOKEN=Nhu76BGhjd8uji8HNB56tgtyh
+ACTIVATION_TOKEN=POlk8Iu8jNh7yhG32ZsdxRTmjhN
+RESET_PASSWORD_TOKEN=jhsTGWmdk8Yhe6Cfdr5cDfe
+```
 
 ## Lisensi Pihak Ketiga 📚
 
