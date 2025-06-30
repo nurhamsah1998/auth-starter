@@ -60,6 +60,6 @@ func (s *AuthService) RefreshToken(c *fiber.Ctx) error {
 		/// akses token JWT akan expired/kadaluarsa dalam 5 jam kedepan setelah berhasil login
 		"exp": time.Now().Add(5 * time.Hour).Unix(),
 	})
-	accessTokenString, _ := accessToken.SignedString([]byte(os.Getenv("ACCESS_TOKEN"))) /// <--- secret key untuk token login (mengambil dari file .env)
-	return c.Status(200).JSON(fiber.Map{"message": "Successfully create new access token", "data": fiber.Map{"refresh_token": accessTokenString}})
+	newAccessTokenString, _ := accessToken.SignedString([]byte(os.Getenv("ACCESS_TOKEN"))) /// <--- secret key untuk token login (mengambil dari file .env)
+	return c.Status(200).JSON(fiber.Map{"message": "Successfully create new access token", "data": fiber.Map{"refresh_token": newAccessTokenString}})
 }

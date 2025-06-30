@@ -19,7 +19,7 @@ func (s *AuthService) Activation(c *fiber.Ctx) error {
 	user := model.User{}
 	activation := c.Params("token_activation")
 	bodyPayload := FormActivation{}
-	/// validasi format json
+
 	if err := c.BodyParser(&bodyPayload); err != nil {
 		return c.Status(400).JSON(fiber.Map{"message": "Invalid body", "error": true})
 	}
@@ -35,13 +35,13 @@ func (s *AuthService) Activation(c *fiber.Ctx) error {
 		})
 	}
 
+	/// proses validasi user dan kode aktivasi
 	token, err := jwt.Parse(activation, func(token *jwt.Token) (any, error) {
 		return []byte(os.Getenv("ACTIVATION_TOKEN")), nil
 	}, jwt.WithValidMethods([]string{jwt.SigningMethodHS256.Alg()}))
 	if err != nil {
 		return errors.New(err.Error())
 	}
-	/// proses validasi user dan kode aktivasi
 	if claims, ok := token.Claims.(jwt.MapClaims); ok {
 		id := claims["id"]
 		code_activation := claims["code_activation"]

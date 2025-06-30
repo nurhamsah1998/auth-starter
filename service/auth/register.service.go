@@ -23,7 +23,7 @@ type FormRegister struct {
 func (s *AuthService) Register(c *fiber.Ctx) error {
 	user := model.User{}
 	bodyPayload := FormRegister{}
-	/// validasi format json
+
 	if err := c.BodyParser(&bodyPayload); err != nil {
 		return c.Status(400).JSON(fiber.Map{"message": "Invalid body", "error": true})
 	}

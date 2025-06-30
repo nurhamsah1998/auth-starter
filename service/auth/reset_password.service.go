@@ -22,7 +22,7 @@ func (s *AuthService) ResetPassword(c *fiber.Ctx) error {
 	bodyPayload := FormResetPassword{}
 	/// mengambil token dari param url
 	resetPwdToken := c.Params("reset_pwd_token")
-	/// validasi format json
+
 	if err := c.BodyParser(&bodyPayload); err != nil {
 		return c.Status(400).JSON(fiber.Map{"message": "Invalid body", "error": true})
 	}

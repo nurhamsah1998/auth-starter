@@ -21,7 +21,7 @@ type FormLogin struct {
 func (s *AuthService) Login(c *fiber.Ctx) error {
 	user := model.User{}
 	bodyPayload := FormLogin{}
-	/// validasi format json
+
 	if err := c.BodyParser(&bodyPayload); err != nil {
 		return c.Status(400).JSON(fiber.Map{"message": "Invalid body", "error": true})
 	}
