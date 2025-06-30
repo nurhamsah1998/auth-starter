@@ -106,10 +106,10 @@ go run main.go
 
 - Rekomendasi pakai [Air](https://github.com/air-verse/air) seperti nodemon di javascript
 
-### Lisensi 📚
+## Lisensi Pihak Ketiga 📚
 
-- Proyek ini dilisensikan di bawah [MIT License](./LICENSE).
-- Proyek ini menggunakan pustaka pihak ketiga berikut:
+Proyek ini menggunakan pustaka pihak ketiga yang dilisensikan di bawah MIT, BSD, dan Apache 2.0.
+Semua hak cipta tetap milik pemilik aslinya.
 
-  - [golang.org/x/crypto/bcrypt](https://pkg.go.dev/golang.org/x/crypto/bcrypt) — BSD 3-Clause License  
-    Lihat salinan lisensinya di [`THIRD_PARTY_LICENSES/golang-x-crypto.LICENSE`](./THIRD_PARTY_LICENSES/golang-x-crypto.LICENSE)
+- Daftar pustaka dan jenis lisensi: [docs/LICENSE_REPORT.txt](./docs/LICENSE_REPORT.txt)
+- Teks lisensi lengkap: [docs/licenses/](./docs/licenses/)
