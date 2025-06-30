@@ -82,7 +82,7 @@ Starter ini sedikit mengadopsi penggunaan backend javascript seperti [Express JS
 
 ### API docs 🌐
 
-untuk API dokumentasi sudah ada, foldernya bernama doc_api. untuk membuka dokumentasi gunakan tool [Bruno](https://www.usebruno.com/)
+untuk API dokumentasi sudah ada, foldernya bernama doc_api. untuk tool dokumentasi saya menggunakan [Bruno](https://www.usebruno.com/)
 
 ### Cara install 💻
 
