@@ -25,7 +25,7 @@ Starter ini sedikit mengadopsi penggunaan backend javascript seperti [Express JS
 - Guard (token verify).
   - middleware untuk memverifikasi token ketika client mengakses resourse tertentu
 
-### Struktur folder 📂
+### Base struktur folder 📂
 
 ```
 📦 auth-starter
