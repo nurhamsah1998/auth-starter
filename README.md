@@ -1,7 +1,7 @@
 # Auth Starter Go-Fiber
 ![aut_starter_small](https://github.com/user-attachments/assets/ed9fda79-60e3-49af-b9d5-113566a29380)
 
-Ini adalah starter auth backend menggunakan [Golang](https://go.dev/), [Fiber](https://gofiber.io/) dan [Gorm](https://gorm.io/)(postgre).
+Ini adalah starter auth backend menggunakan [Golang](https://go.dev/), [Fiber](https://gofiber.io/), [Gorm](https://gorm.io/)(postgre) dan JWT.
 repo ini tidak sengaja terbuat karena sebelumnya akan dipakai untuk server PPDB sekolah.
 Fitur yang tersedia didalam repo ini masih cukup basic, bisa kalian custom sendiri sesuai dengan kebutuhan atau bisa kalian jadikan untuk materi pembelajaran.
 Starter ini sedikit mengadopsi penggunaan backend javascript seperti [Express JS](https://expressjs.com/) dan [Nest JS](https://nestjs.com/) dengan harapan akan mempermudah kalian jika memiliki background javascript/typescript
