@@ -8,9 +8,10 @@ import (
 )
 
 func main() {
+	/// konek ke database
 	internal.DbGormInit()
 	app := fiber.New(fiber.Config{
-		// Override default error handler
+		/// handler untuk mengatasi semua jenis error (global)
 		ErrorHandler: func(ctx *fiber.Ctx, err error) error {
 			var errorMessage string
 			var errorStatus int
@@ -21,7 +22,9 @@ func main() {
 			return ctx.Status(errorStatus).JSON(fiber.Map{"error": true, "message": errorMessage})
 		},
 	})
+	/// menghandle agar tidak terjadi server down ketika terjadi error secara fatal
 	app.Use(recover.New())
+	/// start server
 	server.RouteInit(app)
 	app.Listen(":3000")
 }

@@ -12,6 +12,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+// / form validasi
 type FormResetPassword struct {
 	NewPassword    string `json:"new_password" validate:"required,min=8,max=100"`
 	ReTypePassword string `json:"retype_password" validate:"required,min=8,max=100"`

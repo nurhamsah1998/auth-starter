@@ -12,6 +12,7 @@ import (
 	"github.com/nurhamsah1998/auth-starter/internal/model"
 )
 
+// / form validasi
 type FormForgotPassword struct {
 	Email string `json:"email" validate:"required,email"`
 }

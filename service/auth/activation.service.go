@@ -11,12 +11,14 @@ import (
 	"github.com/nurhamsah1998/auth-starter/internal/model"
 )
 
+// / form validasi
 type FormActivation struct {
 	Activation string `json:"activation" validate:"required"`
 }
 
 func (s *AuthService) Activation(c *fiber.Ctx) error {
 	user := model.User{}
+	/// mengambil token dari param url
 	activation := c.Params("token_activation")
 	bodyPayload := FormActivation{}
 
