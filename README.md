@@ -1,4 +1,5 @@
 # Auth Starter Go-Fiber
+![aut_starter_small](https://github.com/user-attachments/assets/ed9fda79-60e3-49af-b9d5-113566a29380)
 
 Ini adalah starter auth backend menggunakan [Golang](https://go.dev/), [Fiber](https://gofiber.io/) dan [Gorm](https://gorm.io/)(postgre).
 repo ini tidak sengaja terbuat karena sebelumnya akan dipakai untuk server PPDB sekolah.
