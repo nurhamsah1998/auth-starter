@@ -121,6 +121,8 @@ ACTIVATION_TOKEN=POlk8Iu8jNh7yhG32ZsdxRTmjhN
 RESET_PASSWORD_TOKEN=jhsTGWmdk8Yhe6Cfdr5cDfe
 ```
 
+🚨Disclaimer dulu ya, disini aku juga masih belajar jadi ambil yang menurut kalian bermanfaat 🚨
+
 ## Lisensi Pihak Ketiga 📚
 
 Proyek ini menggunakan pustaka pihak ketiga yang dilisensikan di bawah MIT, BSD, dan Apache 2.0.
