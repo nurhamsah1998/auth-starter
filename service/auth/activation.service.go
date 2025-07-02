@@ -66,7 +66,7 @@ func (s *AuthService) Activation(c *fiber.Ctx) error {
 		return errors.New(err.Error())
 	}
 	/// proses update kolom "Activation" pada tabel users,
-	/// set ke nil, menandakan client sudah melakukan aktivasi
-	internal.DB.Model(&user).Update("Activation", nil)
+	/// set ke "", menandakan client sudah melakukan aktivasi
+	internal.DB.Model(&user).Update("Activation", "")
 	return c.Status(200).JSON(fiber.Map{"message": "Successfully activated account", "error": false})
 }
