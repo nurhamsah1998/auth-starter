@@ -39,7 +39,7 @@ func (s *AuthService) Login(c *fiber.Ctx) error {
 	}
 	/// proses pencarian data by email
 	res := internal.DB.Preload("Profile").Find(&user, "email = ?", bodyPayload.Email)
-	/// jika pencarian data by email di rables users tidak ditemukan
+	/// jika pencarian data by email di tabel users tidak ditemukan
 	if res.RowsAffected == 0 {
 		return errors.New("invalid credential")
 	}
