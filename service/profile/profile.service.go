@@ -1,18 +1,11 @@
-package service
+package profile
 
 import (
 	"github.com/gofiber/fiber/v2"
+	"github.com/nurhamsah1998/auth-starter/internal"
 	"github.com/nurhamsah1998/auth-starter/internal/middleware"
+	"github.com/nurhamsah1998/auth-starter/internal/model"
 )
-
-type (
-	ProfileService struct{}
-)
-
-// / service handler untuk menginject servis ke controller
-func ProfileHandler() *ProfileService {
-	return &ProfileService{}
-}
 
 func (s *ProfileService) MyProfile(c *fiber.Ctx) error {
 	/// userSession berisi data client,
@@ -20,5 +13,8 @@ func (s *ProfileService) MyProfile(c *fiber.Ctx) error {
 	/// kurang lebih kalau di express JS seperti req.user.id / req.user.email
 	userSession := c.Locals("user").(middleware.UserSession)
 
-	return c.Status(200).JSON(fiber.Map{"message": "OK", "error": false, "data": userSession})
+	profile := model.Profile{}
+	internal.DB.First(&profile, "id = ?", userSession.ID)
+
+	return c.Status(200).JSON(fiber.Map{"message": "OK", "error": false, "data": profile})
 }

@@ -1,0 +1,24 @@
+meta {
+  name: Update profile
+  type: http
+  seq: 3
+}
+
+patch {
+  url: http://localhost:3000/api/profile
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name":"nur hamsah",
+    "phone_number":"081213221343",
+    "full_address": "ngadi"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

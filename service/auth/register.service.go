@@ -17,7 +17,7 @@ import (
 type FormRegister struct {
 	Name        string `json:"name" validate:"required"`
 	Email       string `json:"email" validate:"required,email"`
-	PhoneNumber string `json:"phone_number" validate:"required,numeric,min=10,max=15"`
+	PhoneNumber string `json:"phone_number" validate:"required,numeric,min=10,max=13"`
 	Password    string `json:"password" validate:"required,min=8,max=100"`
 }
 
