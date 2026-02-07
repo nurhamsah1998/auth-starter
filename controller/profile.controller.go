@@ -11,5 +11,5 @@ func ProfileController(app fiber.Router) {
 	service := profile.ProfileHandler()
 	/// inject service profile ke profile controller
 	app.Get("/profile", middleware.Guard, service.MyProfile)
-	app.Patch("/profile/:profile_id", middleware.Guard, service.UpdateProfile)
+	app.Patch("/profile", middleware.Guard, service.UpdateMyProfile)
 }

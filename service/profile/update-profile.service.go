@@ -2,30 +2,30 @@ package profile
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
 	"github.com/nurhamsah1998/auth-starter/internal"
+	"github.com/nurhamsah1998/auth-starter/internal/middleware"
 	"github.com/nurhamsah1998/auth-starter/internal/model"
 )
 
 type FormUpdateProfile struct {
-	Name        string `json:"name" validate:"required,min=8,max=100"`
+	Name        string `json:"name" validate:"required,min=1,max=100"`
 	FullAddress string `json:"full_address"`
 	PhoneNumber string `json:"phone_number" validate:"min=8,max=100"`
 }
 
-func (s *ProfileService) UpdateProfile(c *fiber.Ctx) error {
-	paramId := c.Params("profile_id")
+func (s *ProfileService) UpdateMyProfile(c *fiber.Ctx) error {
+	userSession := c.Locals("user").(middleware.UserSession)
 	profile := model.Profile{}
 	bodyPayload := FormUpdateProfile{}
-	internal.DB.First(&profile, "id = ?", paramId)
-	if profile.ID == 0 {
-		return c.Status(400).JSON(fiber.Map{"message": "Invalid body", "error": true})
-	}
+	internal.DB.First(&profile, "id = ?", userSession.ID)
 	if err := c.BodyParser(&bodyPayload); err != nil {
 		return c.Status(400).JSON(fiber.Map{"message": "Invalid body", "error": true})
 	}
+
 	// validation form value
 	if err := internal.ClassValidate.Struct(bodyPayload); err != nil {
 		errors := make(map[string]string)
@@ -41,16 +41,15 @@ func (s *ProfileService) UpdateProfile(c *fiber.Ctx) error {
 	profile.PhoneNumber = bodyPayload.PhoneNumber
 	profile.Name = bodyPayload.Name
 	profile.FullAddress = bodyPayload.FullAddress
-	/// proses insert ke database
 
-	res := internal.DB.Model(&model.Profile{}).Where("id = ?", paramId).Updates(fiber.Map{
+	res := internal.DB.Model(&model.Profile{}).Where("id = ?", userSession.ID).Updates(map[string]interface{}{
 		"name":         profile.Name,
 		"phone_number": profile.PhoneNumber,
 		"full_address": profile.FullAddress,
 	})
-	/// jika terjadi error ketika proses insert
-	/// contoh : error unique username
+	/// jika terjadi error ketika proses update
 	if res.RowsAffected == 0 {
+		fmt.Println(res.Error.Error())
 		return errors.New(res.Error.Error())
 	}
 
